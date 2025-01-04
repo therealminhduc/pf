@@ -4,10 +4,14 @@ import { renderWorks } from "./components/works";
 import { renderFooter } from "./components/footer";
 import { renderSocials } from "./components/socials";
 
+const getBasePath = () => {
+  return import.meta.env.BASE_URL || "/";
+};
+
 const routes: { [key: string]: () => void } = {
-  "/": renderIntroduction,
-  "/works": renderWorks,
-  "/socials": renderSocials,
+  [getBasePath()]: renderIntroduction,
+  [getBasePath() + "works"]: renderWorks,
+  [getBasePath() + "socials"]: renderSocials,
 };
 
 const navigateTo = (path: string) => {
