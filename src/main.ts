@@ -5,7 +5,9 @@ import { renderFooter } from "./components/footer";
 import { renderSocials } from "./components/socials";
 
 export const getBasePath = () => {
-  return import.meta.env.BASE_URL;
+  const base = import.meta.env.BASE_URL;
+  console.log("Base path:", base);
+  return base;
 };
 
 const routes: { [key: string]: () => void } = {
@@ -27,7 +29,7 @@ const renderRoute = () => {
 
   const path = window.location.pathname;
   console.log("Current path:", path);
-  console.log("Available routes:", routes);
+  console.log("Available routes:", Object.keys(routes));
   const route = routes[path];
   console.log("Matched route:", route);
 
