@@ -1,4 +1,5 @@
 import { createP, createLink, createWrapper } from "../ui/helper";
+
 export const renderIntroduction = () => {
   const app = document.getElementById("app")!;
   app.innerHTML = ""; // Clear previous content

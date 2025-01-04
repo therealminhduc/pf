@@ -14,9 +14,14 @@ export const createLink = (
   isInternal = false,
 ): HTMLAnchorElement => {
   const link = document.createElement("a");
-  link.href = isInternal ? getBasePath() + href.replace(/^\//, "") : href;
+  if (isInternal) {
+    const cleanHref = href.replace(/^\/+/, "");
+    link.href = getBasePath() + cleanHref;
+    link.setAttribute("data-link", "");
+  } else {
+    link.href = href;
+  }
   link.textContent = text;
-  if (isInternal) link.setAttribute("data-link", "");
   return link;
 };
 

@@ -15,7 +15,9 @@ const routes: { [key: string]: () => void } = {
 };
 
 const navigateTo = (path: string) => {
-  window.history.pushState({}, "", path);
+  const cleanPath = path.replace(/^\/+/, "");
+  const fullPath = getBasePath() + cleanPath;
+  window.history.pushState({}, "", fullPath);
   renderRoute();
 };
 
@@ -25,7 +27,9 @@ const renderRoute = () => {
 
   const path = window.location.pathname;
   console.log("Current path:", path);
+  console.log("Available routes:", routes);
   const route = routes[path];
+  console.log("Matched route:", route);
 
   if (route) {
     route();
