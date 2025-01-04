@@ -16,7 +16,7 @@ export const renderSocials = () => {
 
   const socialsList = createListWithLinks(socials, true);
 
-  const backLink = createLink("/", "back", true);
+  const backLink = createLink("", "back", true);
   document.body.appendChild(backLink);
 
   wrapper.appendChild(title);

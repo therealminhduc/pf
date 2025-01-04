@@ -1,4 +1,5 @@
 import { LinkItem } from "../models/linkItem";
+import { getBasePath } from "../main.ts";
 
 export const createP = (text: string): HTMLParagraphElement => {
   const p = document.createElement("p");
@@ -13,7 +14,7 @@ export const createLink = (
   isInternal = false,
 ): HTMLAnchorElement => {
   const link = document.createElement("a");
-  link.href = href;
+  link.href = isInternal ? getBasePath() + href.replace(/^\//, "") : href;
   link.textContent = text;
   if (isInternal) link.setAttribute("data-link", "");
   return link;

@@ -18,7 +18,7 @@ export const renderIntroduction = () => {
     +84 h-town represented.<br><br>
   `;
 
-  const worksLink = createLink("/works", "works", true);
+  const worksLink = createLink("works", "works", true);
 
   wrapper.append(heading, age, description, worksLink);
   app.appendChild(wrapper);

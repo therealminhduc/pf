@@ -4,8 +4,8 @@ import { renderWorks } from "./components/works";
 import { renderFooter } from "./components/footer";
 import { renderSocials } from "./components/socials";
 
-const getBasePath = () => {
-  return import.meta.env.BASE_URL || "/";
+export const getBasePath = () => {
+  return import.meta.env.BASE_URL;
 };
 
 const routes: { [key: string]: () => void } = {
@@ -24,6 +24,7 @@ const renderRoute = () => {
   app.innerHTML = "";
 
   const path = window.location.pathname;
+  console.log("Current path:", path);
   const route = routes[path];
 
   if (route) {
@@ -38,6 +39,7 @@ const renderRoute = () => {
 window.addEventListener("popstate", renderRoute);
 
 renderRoute();
+
 const setupNavigation = () => {
   const navLinks = document.querySelectorAll("[data-link]");
   navLinks.forEach((link) => {

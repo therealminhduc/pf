@@ -6,7 +6,7 @@ export const renderFooter = () => {
 
   const wrapper = createWrapper("footer-wrapper");
 
-  const socialsLink = createLink("/socials", "on", true);
+  const socialsLink = createLink("socials", "on", true);
   const dontExpect = createP("*don't expect some fancy things here.");
 
   wrapper.append(socialsLink, dontExpect);
