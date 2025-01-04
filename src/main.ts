@@ -5,9 +5,7 @@ import { renderFooter } from "./components/footer";
 import { renderSocials } from "./components/socials";
 
 export const getBasePath = () => {
-  const base = import.meta.env.BASE_URL;
-  console.log("Base path:", base);
-  return base;
+  return import.meta.env.BASE_URL;
 };
 
 const routes: { [key: string]: () => void } = {
@@ -17,9 +15,7 @@ const routes: { [key: string]: () => void } = {
 };
 
 const navigateTo = (path: string) => {
-  const cleanPath = path.replace(/^\/+/, "");
-  const fullPath = getBasePath() + cleanPath;
-  window.history.pushState({}, "", fullPath);
+  window.history.pushState({}, "", path);
   renderRoute();
 };
 
@@ -28,10 +24,7 @@ const renderRoute = () => {
   app.innerHTML = "";
 
   const path = window.location.pathname;
-  console.log("Current path:", path);
-  console.log("Available routes:", Object.keys(routes));
   const route = routes[path];
-  console.log("Matched route:", route);
 
   if (route) {
     route();
